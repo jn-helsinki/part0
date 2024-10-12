@@ -3,10 +3,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes/new_note
-    activate server
-    Note right of browser: The server responds with a 302 status and redirects to the location /notes
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     server-->>browser: HTML document
     deactivate server
 
@@ -15,17 +12,17 @@ sequenceDiagram
     server-->>browser: the css file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
     server-->>browser: the JavaScript file
     deactivate server
 
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
+    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server.
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
     server-->>browser: [{ "content": "HTML is easy", "date": "2023-1-1" }, ... ]
     deactivate server
 
-    Note right of browser: The browser executes the callback function that renders the notes
+    Note right of browser: The browser stores the notes in an array and executes the callback function that renders the notes
 ```
