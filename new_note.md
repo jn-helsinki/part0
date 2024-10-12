@@ -6,6 +6,7 @@ sequenceDiagram
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/notes/new_note
     activate server
     Note right of browser: The server responds with a 302 status and redirects to the location /notes
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
     server-->>browser: HTML document
     deactivate server
 
